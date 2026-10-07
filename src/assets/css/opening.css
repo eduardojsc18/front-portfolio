@@ -1,0 +1,202 @@
+/* The card grows with its content; controls always reserve their own space. */
+.portfolio { background: #f7f6f0; }
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto minmax(260px, 1fr) auto auto auto;
+  min-height: min(800px, 100svh);
+  height: auto;
+  padding: 0 0 24px;
+  gap: 12px 48px;
+  align-items: stretch;
+}
+.site-header { grid-column: 1 / -1; grid-row: 1; width: 100%; z-index: 4; padding-block: 24px; }
+.hero-copy { display: contents; }
+#profile-panel { grid-column: 1; grid-row: 2 / 5; align-self: center; min-width: 0; min-height: 0; padding: 30px 0; text-align: left; z-index: 2; }
+.hero-text { min-height: 0; animation: enter .7s ease both; }
+.hero h1 { font-size: clamp(36px, 4.1vw, 53px); overflow-wrap: break-word; }
+.hero-description { min-height: 0; max-width: 430px; }
+.portrait-scene { position: relative; grid-column: 2; grid-row: 2 / 6; z-index: -1; width: auto; height: auto; min-height: 0; padding: 0; margin: 0 -40px 0 -20px; animation: none; }
+.portrait-frame { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; overflow: hidden; background: transparent; }
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.portrait-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, #f7f6f0, transparent 20%), linear-gradient(180deg, #f7f6f0 0%, transparent 14%, transparent 65%, #f7f6f0 100%); }
+.profile-picker { position: relative; grid-column: 2; grid-row: 3; z-index: 3; width: 100%; margin: 0; background: #fafaf2eb; border: 1px solid #ffffffb3; backdrop-filter: blur(16px); box-shadow: 0 6px 25px #343c3012; }
+.profile-picker button { flex: 1; min-height: 44px; padding: 10px 8px; }
+.hero-actions { position: relative; grid-column: 2; grid-row: 4; z-index: 3; width: 100%; margin: 0; gap: 10px; }
+.hero-actions .button { flex: 1; min-width: 0; min-height: 48px; padding: 12px 10px; }
+.social-shortcuts { flex-shrink: 0; }
+.social-shortcuts a { width: 44px; height: 48px; min-width: 44px; min-height: 44px; background: #fafaf2eb; backdrop-filter: blur(16px); border-color: #ffffffb3; border-radius: 50%; color: #343a2e; }
+.social-shortcuts svg { display: block; overflow: visible; }
+.scroll-link { position: relative; grid-column: 1; grid-row: 5; z-index: 2; margin: 0; align-self: end; }
+.scroll-link span { padding: 0; }
+.portrait-orbit, .portrait-spark, .portrait-label, .portrait-note, .portrait-index { display: none; }
+.header-contact { background: #fafaf2c9; border: 1px solid #dce0d2; border-radius: 50px; padding: 11px 17px; backdrop-filter: blur(12px); }
+@media (min-width: 760px) and (max-width: 999px) {
+  .hero { gap: 12px 28px; }
+  .hero-actions { flex-wrap: wrap; }
+  .hero-actions .button { flex-basis: 100%; }
+  .social-shortcuts { width: 100%; justify-content: center; }
+}
+@media (max-width: 759px) {
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(160px, 1fr) auto auto auto;
+    grid-template-areas: none;
+    min-height: min(780px, 100svh);
+    height: auto;
+    padding: 0 0 max(12px, env(safe-area-inset-bottom));
+    gap: 10px 0;
+  }
+  .site-header { grid-area: auto; grid-column: 1; grid-row: 1; padding-block: 18px; gap: 10px; }
+  .header-name { min-width: 0; }
+  .header-name span { max-width: 220px; }
+  .header-contact { padding: 0; flex-shrink: 0; }
+  #profile-panel { grid-area: auto; grid-column: 1; grid-row: 2; width: 100%; padding: 0 0 8px; align-self: start; }
+  .hero .eyebrow { justify-content: flex-start; font-size: 8px; letter-spacing: 1.1px; margin-bottom: 10px; }
+  .hero h1 { font-size: clamp(30px, 7.5vw, 42px); line-height: 1.13; letter-spacing: -1.5px; }
+  .hero-description { font-size: 12px; line-height: 1.65; max-width: 440px; margin: 12px 0 0; }
+  .portrait-scene { grid-area: auto; grid-column: 1; grid-row: 3 / 7; position: relative; width: auto; min-height: 0; margin: -12px -20px 0; padding: 0; }
+  .portrait-frame { height: 100%; border-radius: 0; }
+  .portrait-frame img { position: static; width: 100%; height: 100%; object-fit: cover; object-position: center 28%; mask-image: none; -webkit-mask-image: none; }
+  .portrait-frame::after { background: linear-gradient(180deg, #f7f6f0 0%, transparent 15%, transparent 50%, #f7f6f080 76%, #f7f6f0 100%); }
+  .profile-picker { grid-area: auto; grid-column: 1; grid-row: 4; width: 100%; margin: 0; }
+  .profile-picker button { font-size: 12px; min-height: 40px; }
+  .hero-actions { grid-area: auto; grid-column: 1; grid-row: 5; width: 100%; margin: 0; flex-wrap: nowrap; }
+  .hero-actions .button { font-size: 11px; gap: 8px; min-height: 48px; }
+  .social-shortcuts { width: auto; gap: 6px; }
+  .scroll-link { grid-area: auto; grid-column: 1; grid-row: 6; justify-content: center; justify-self: auto; font-size: 10px; margin: 0; }
+  .scroll-link span { font-size: 16px; padding: 0; }
+  .values-strip { padding-block: 18px; }
+}
+@media (max-width: 359px) {
+  .portrait-scene { margin-inline: -15px; }
+  .profile-picker button { font-size: 11px; }
+  .hero-actions { gap: 7px; }
+  .hero-actions .button { font-size: 10px; }
+  .social-shortcuts a { width: 40px; min-width: 40px; }
+}
+@media (max-width: 759px) and (max-height: 650px) {
+  .hero { grid-template-rows: auto auto minmax(110px, 1fr) auto auto auto; }
+  .site-header { padding-block: 12px; }
+  .hero h1 { font-size: clamp(28px, 7vw, 36px); }
+  .hero-description { margin-top: 8px; font-size: 11px; }
+}
+/* A phone in landscape uses the available width instead of stacking the card. */
+@media (min-width: 560px) and (max-width: 759px) and (max-height: 500px) {
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto minmax(100px, 1fr) auto auto auto; gap: 8px 24px; }
+  .site-header { grid-column: 1 / -1; }
+  #profile-panel { grid-column: 1; grid-row: 2 / 5; align-self: center; }
+  .portrait-scene { grid-column: 2; grid-row: 2 / 6; margin: 0 -20px 0 -12px; }
+  .profile-picker { grid-column: 2; grid-row: 3; }
+  .hero-actions { grid-column: 2; grid-row: 4; }
+  .hero-actions .button { font-size: 10px; }
+  .hero-actions .button > .icon:last-child { display: none; }
+  .social-shortcuts a { width: 38px; min-width: 38px; }
+  .scroll-link { grid-column: 1; grid-row: 5; }
+}
+/* A quieter identity bar and a compact, secondary profile control. */
+.site-header { padding-block: 14px; gap: 12px; }
+.brand { font-size: 32px; letter-spacing: -4px; }
+.brand > span { font-size: 17px; margin-left: 5px; }
+.header-name { font-size: 11px; }
+.header-name span { font-size: 9px; }
+.header-contact { padding: 8px 12px; gap: 10px; font-size: 11px; }
+.hero .eyebrow { font-size: 12px; letter-spacing: .2px; font-weight: 400; color: #727866; margin-bottom: 12px; }
+.hero .status-dot { width: 4px; height: 4px; }
+.profile-picker { width: max-content; max-width: 100%; justify-self: center; padding: 3px; gap: 2px; box-shadow: none; background: #fafaf2d9; }
+.profile-picker button { flex: none; font-size: 10px; min-height: 38px; padding: 9px 18px; }
+.portrait-scene { z-index: 0; touch-action: pan-y pinch-zoom; cursor: grab; user-select: none; }
+.portrait-scene:active { cursor: grabbing; }
+.portrait-frame img { -webkit-user-drag: none; }
+.swipe-hint { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 2; white-space: nowrap; font-size: 9px; letter-spacing: .3px; color: #59634e; background: #f7f6f0c9; border-radius: 20px; padding: 5px 10px; pointer-events: none; }
+@media (max-width: 759px) {
+  .site-header { padding-block: 10px; gap: 9px; }
+  .brand { font-size: 28px; }
+  .brand > span { font-size: 14px; }
+  .header-name { font-size: 10px; }
+  .header-name span { font-size: 8px; }
+  .header-contact { width: 32px; height: 32px; padding: 0; font-size: 0; }
+  .header-contact .icon { width: 15px; height: 15px; }
+  .hero .eyebrow { font-size: 11px; letter-spacing: .2px; margin-bottom: 8px; }
+  .profile-picker button { font-size: 10px; min-height: 38px; }
+  .swipe-hint { top: 12px; }
+}
+/* The loading curtain finishes independently of optional network resources. */
+.page-loader { position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; flex-direction: column; background: #f7f6f0; visibility: hidden; opacity: 0; pointer-events: none; transition: opacity .4s, visibility .4s; }
+.booting .page-loader { visibility: visible; opacity: 1; pointer-events: auto; }
+.loader-monogram { font-family: 'Playfair Display', serif; font-size: 76px; line-height: 1.15; letter-spacing: -8px; color: #343a2e; animation: enter .65s both; }
+.loader-monogram > span { font-family: 'DM Sans', sans-serif; font-size: 28px; letter-spacing: 0; margin-left: 10px; color: #556447; }
+.loader-name { font-size: 11px; letter-spacing: 2px; margin-top: 14px; }
+.loader-line { width: 90px; height: 2px; margin-top: 24px; background: #dce0d2; overflow: hidden; }
+.loader-line::after { content: ''; display: block; width: 100%; height: 100%; background: #556447; transform-origin: left; animation: loading 1.2s ease both; }
+.booting .portfolio { opacity: 0; pointer-events: none; }
+.booting body { overflow: hidden; }
+.page-entered .site-header { animation: enter .65s both; }
+.page-entered .hero-text { animation: enter .75s .08s both; }
+.page-entered .portrait-frame { animation: enter .9s .16s both; }
+.page-entered .profile-picker { animation: enter .65s .25s both; }
+.page-entered .hero-actions { animation: enter .65s .32s both; }
+.page-entered .scroll-link { animation: enter .65s .4s both; }
+@media (prefers-reduced-motion: reduce) {
+  .page-loader, .reveal { transition: none; }
+  .page-entered .site-header, .page-entered .hero-text, .page-entered .portrait-frame, .page-entered .profile-picker, .page-entered .hero-actions, .page-entered .scroll-link, .loader-monogram, .loader-line::after { animation: none; }
+}
+/* Clear roles: profile navigation with the introduction, social links in the
+   identity bar, and one contact action over the portrait. */
+.hero { grid-template-rows: auto minmax(260px, 1fr) auto auto auto; }
+#profile-panel { grid-row: 2; align-self: end; padding-bottom: 16px; }
+.profile-choice-label { grid-column: 1; grid-row: 3; align-self: center; font-size: 10px; color: #797e6d; z-index: 2; }
+.profile-picker { grid-column: 1; grid-row: 3; justify-self: start; margin-left: 64px; padding: 0; gap: 22px; border: 0; border-radius: 0; background: none; backdrop-filter: none; }
+.profile-picker button { padding: 10px 0; min-height: 44px; font-size: 12px; border-radius: 0; border-bottom: 2px solid transparent; color: #75796d; }
+.profile-picker button.selected { color: var(--ink); background: none; box-shadow: none; border-bottom-color: var(--accent); font-weight: 700; }
+.hero-actions { grid-column: 1; grid-row: 4; justify-content: flex-start; padding-block: 12px 28px; }
+.hero-actions .button { flex: none; flex-basis: auto; border-radius: 100px; padding: 13px 22px; min-height: 48px; font-size: 12px; gap: 10px; box-shadow: 0 5px 18px #343c3012; }
+.site-header .social-shortcuts { margin-left: auto; width: auto; gap: 14px; justify-content: flex-end; }
+.site-header .social-shortcuts a { display: inline-flex; align-items: center; gap: 5px; width: auto; min-width: 0; height: auto; min-height: 44px; border: 0; background: none; backdrop-filter: none; border-radius: 0; font-size: 10px; color: #5d6653; }
+.site-header .social-shortcuts .icon { width: 15px; height: 15px; }
+.swipe-hint { top: auto; bottom: 24px; background: none; font-size: 9px; }
+@media (max-width: 759px) {
+  .hero { grid-template-rows: auto auto auto minmax(175px, 1fr) auto auto; gap: 8px 0; }
+  #profile-panel { grid-column: 1; grid-row: 2; padding-bottom: 0; }
+  .profile-choice-label { grid-column: 1; grid-row: 3; font-size: 9px; }
+  .profile-picker { grid-column: 1; grid-row: 3; justify-self: start; margin-left: 56px; gap: 22px; }
+  .profile-picker button { font-size: 11px; min-height: 42px; }
+  .portrait-scene { grid-column: 1; grid-row: 4 / 7; margin-top: -4px; }
+  .hero-actions { grid-column: 1; grid-row: 5; justify-content: center; padding: 0 0 5px; }
+  .hero-actions .button { flex: none; flex-basis: auto; font-size: 11px; padding: 12px 20px; min-height: 48px; }
+  .hero-actions .button > .icon:last-child { display: block; }
+  .scroll-link { grid-column: 1; grid-row: 6; }
+  .site-header { gap: 8px; }
+  .site-header .social-shortcuts { gap: 10px; }
+  .site-header .social-shortcuts a { font-size: 9px; gap: 0; }
+  .site-header .social-shortcuts .icon { display: none; }
+  .swipe-hint { bottom: 92px; padding: 0; font-size: 8px; }
+}
+@media (max-width: 759px) and (max-height: 650px) {
+  .hero { grid-template-rows: auto auto auto minmax(115px, 1fr) auto auto; }
+}
+@media (min-width: 560px) and (max-width: 759px) and (max-height: 500px) {
+  .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto minmax(100px, 1fr) auto auto auto; }
+  #profile-panel { grid-column: 1; grid-row: 2; }
+  .profile-choice-label, .profile-picker { grid-column: 1; grid-row: 3; }
+  .portrait-scene { grid-column: 2; grid-row: 2 / 6; margin-top: 0; }
+  .hero-actions { grid-column: 1; grid-row: 4; justify-content: flex-start; }
+  .scroll-link { grid-column: 1; grid-row: 5; }
+  .swipe-hint { bottom: 24px; }
+}
+/* Keep the gesture cue readable against the bright top edge of the photo. */
+.swipe-hint { top: 12px; bottom: auto; color: #59634e; background: #f7f6f0d9; padding: 5px 9px; border-radius: 20px; }
+/* Mobile introduces the person in two short lines and gives the portrait room. */
+.hero-mobile-name, .hero-description-short { display: none; }
+@media (max-width: 759px) {
+  #hero-kicker, .hero h1 > :not(.hero-mobile-name), .hero-description-full { display: none; }
+  .hero-mobile-name, .hero-description-short { display: inline; }
+  .hero-mobile-name { font-family: 'Playfair Display', serif; font-weight: 500; color: var(--accent); }
+  .hero h1 { font-size: clamp(26px, 7.2vw, 36px); line-height: 1.15; letter-spacing: -1px; }
+  .hero-description, .portfolio[data-profile="fisioterapia"] .hero-description { font-size: 11px; line-height: 1.5; margin-top: 7px; }
+  #profile-panel { padding-bottom: 0; }
+  .profile-picker button { min-height: 40px; }
+}

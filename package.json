@@ -1,22 +1,12 @@
 {
+  "name": "erika-queiroz-portfolio",
+  "version": "2.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.14",
-    "nuxt": "^3.6.1",
-    "postcss": "^8.4.24",
-    "tailwind-scrollbar": "^3.0.4",
-    "tailwindcss": "^3.3.2"
-  },
-  "dependencies": {
-    "consola": "^3.0.1",
-    "swiper": "^9.3.2",
-    "typescript": "^5.1.3"
+    "dev": "node scripts/serve.cjs",
+    "start": "node scripts/serve.cjs",
+    "check": "node --check src/assets/js/site.js && node --check src/assets/js/profiles.js && node --check scripts/serve.cjs && node --check scripts/build.cjs && node scripts/check.cjs",
+    "build": "node scripts/build.cjs"
   }
 }
