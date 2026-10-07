@@ -124,7 +124,7 @@ function updateProfileSections(key) {
   ])
     document.querySelector(selector).content = document.title;
   const image = new URL(
-    `img/portraits/erika-${key}.webp`,
+    "img/social/erika-queiroz-preview-2026.jpg",
     "https://fisioerikaqueiroz.vercel.app/",
   ).href;
   for (const selector of [
@@ -132,18 +132,14 @@ function updateProfileSections(key) {
     'meta[name="twitter:image"]',
   ])
     document.querySelector(selector).content = image;
-  document.getElementById("person-schema").textContent = JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Erika Queiroz",
-    jobTitle: clinical
-      ? "Fisioterapeuta especialista em Ortopedia"
-      : ["Fisioterapeuta", "Empresária"],
-    sameAs: [
-      "https://www.linkedin.com/in/erikaqueiroz/",
-      "https://www.instagram.com/erikaqueiroozz/",
-    ],
-  });
+  const schemaElement = document.getElementById("person-schema");
+  const schema = JSON.parse(schemaElement.textContent);
+  const person = schema["@graph"].find((item) => item["@type"] === "Person");
+  person.jobTitle = clinical
+    ? "Fisioterapeuta especialista em Ortopedia"
+    : ["Fisioterapeuta", "Empresária"];
+  schema["@graph"].find((item) => item["@type"] === "ProfilePage").name = document.title;
+  schemaElement.textContent = JSON.stringify(schema);
   const url = new URL(location.href);
   url.searchParams.set("perfil", key);
   const anchor = document.getElementById(url.hash.slice(1));

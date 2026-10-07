@@ -20,9 +20,11 @@
       content="Conheça Erika Queiroz, sua atuação na fisioterapia e no e-commerce. Explore sua trajetória, conecte-se nas redes e converse pelo WhatsApp."
       name="description"
     />
-    <meta content="index, follow" name="robots" />
+    <meta content="index, follow, max-image-preview:large" name="robots" />
     <meta content="telephone=no" name="format-detection" />
     <meta content="#f7f6f0" name="theme-color" />
+    <link rel="canonical" href="https://fisioerikaqueiroz.vercel.app/" />
+    <meta property="og:url" content="https://fisioerikaqueiroz.vercel.app/" />
     <meta content="pt_BR" property="og:locale" />
     <meta content="website" property="og:type" />
     <meta content="Erika Queiroz" property="og:site_name" />
@@ -35,13 +37,18 @@
       property="og:description"
     />
     <meta
-      content="https://fisioerikaqueiroz.vercel.app/img/portraits/erika-pessoal.webp"
+      content="https://fisioerikaqueiroz.vercel.app/img/social/erika-queiroz-preview-2026.jpg"
       property="og:image"
     />
     <meta
-      content="Retrato de Erika Queiroz, fisioterapeuta e empresária"
+      content="Erika Queiroz, fisioterapeuta e empresária — conheça minha trajetória"
       property="og:image:alt"
     />
+    <meta property="og:image:secure_url" content="https://fisioerikaqueiroz.vercel.app/img/social/erika-queiroz-preview-2026.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:image:alt" content="Erika Queiroz, fisioterapeuta e empresária" />
     <meta content="summary_large_image" name="twitter:card" />
     <meta
       content="Erika Queiroz | Cuidado, negócios e conexões"
@@ -52,7 +59,7 @@
       name="twitter:description"
     />
     <meta
-      content="https://fisioerikaqueiroz.vercel.app/img/portraits/erika-pessoal.webp"
+      content="https://fisioerikaqueiroz.vercel.app/img/social/erika-queiroz-preview-2026.jpg"
       name="twitter:image"
     />
     <link href="https://fonts.googleapis.com" rel="preconnect" />
@@ -74,16 +81,61 @@
     <link as="image" href="img/portraits/erika-pessoal.webp" rel="preload" />
     <script src="assets/js/site.js" type="module"></script>
     <script id="person-schema" type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Erika Queiroz",
-        "jobTitle": ["Fisioterapeuta", "Empresária"],
-        "sameAs": [
-          "https://www.linkedin.com/in/erikaqueiroz/",
-          "https://www.instagram.com/erikaqueiroozz/"
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://fisioerikaqueiroz.vercel.app/#website",
+      "url": "https://fisioerikaqueiroz.vercel.app/",
+      "name": "Erika Queiroz",
+      "alternateName": "Dra. Erika Queiroz",
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://fisioerikaqueiroz.vercel.app/#page",
+      "url": "https://fisioerikaqueiroz.vercel.app/",
+      "name": "Erika Queiroz | Cuidado, negócios e conexões",
+      "isPartOf": {
+        "@id": "https://fisioerikaqueiroz.vercel.app/#website"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://fisioerikaqueiroz.vercel.app/#portrait"
+      },
+      "mainEntity": {
+        "@id": "https://fisioerikaqueiroz.vercel.app/#erika"
       }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://fisioerikaqueiroz.vercel.app/#portrait",
+      "url": "https://fisioerikaqueiroz.vercel.app/img/social/erika-queiroz-fisioterapeuta-2026.jpg",
+      "contentUrl": "https://fisioerikaqueiroz.vercel.app/img/social/erika-queiroz-fisioterapeuta-2026.jpg",
+      "width": 900,
+      "height": 1200,
+      "caption": "Erika Queiroz, fisioterapeuta especialista em Ortopedia"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://fisioerikaqueiroz.vercel.app/#erika",
+      "name": "Erika Queiroz",
+      "url": "https://fisioerikaqueiroz.vercel.app/",
+      "jobTitle": [
+        "Fisioterapeuta",
+        "Empresária"
+      ],
+      "image": "https://fisioerikaqueiroz.vercel.app/img/social/erika-queiroz-fisioterapeuta-2026.jpg",
+      "mainEntityOfPage": {
+        "@id": "https://fisioerikaqueiroz.vercel.app/#page"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/erikaqueiroz/",
+        "https://www.instagram.com/erikaqueiroozz/"
+      ]
+    }
+  ]
+}
     </script>
     <script
       async=""
